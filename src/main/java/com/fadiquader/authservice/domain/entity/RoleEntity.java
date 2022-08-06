@@ -1,8 +1,6 @@
 package com.fadiquader.authservice.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +9,8 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "role")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

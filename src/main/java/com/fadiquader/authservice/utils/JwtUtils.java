@@ -32,7 +32,6 @@ public class JwtUtils {
                 .withSubject(username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + expMs))
                 .withIssuer("localhost:8080")
-//                .withClaim("roles", user.getAuthorities())
                 .sign(algorithm);
     }
 
@@ -59,6 +58,7 @@ public class JwtUtils {
     }
 
     public DecodedJWT verifyRefreshToken(String token) {
+        log.info("Refresh Token {}", token);
         return verifyToken(refreshTokenSecret, token);
     }
 
