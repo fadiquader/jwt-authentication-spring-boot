@@ -2,6 +2,7 @@ package com.fadiquader.authservice.service.impl;
 
 import com.fadiquader.authservice.domain.entity.RefreshTokenEntity;
 import com.fadiquader.authservice.domain.entity.UserEntity;
+import com.fadiquader.authservice.exception.RecordNotFoundException;
 import com.fadiquader.authservice.repository.RefreshTokenRepository;
 import com.fadiquader.authservice.repository.UserRepository;
 import com.fadiquader.authservice.service.RefreshTokenService;
@@ -22,12 +23,13 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     private final JwtUtils jwtUtils;
 
     private void invalidateRefreshToken(String token) {
-        RefreshTokenEntity oldToken = refreshTokenRepository.findByToken(token)
-                .orElseThrow(() -> new RuntimeException("Invalid token"));
+        RefreshTokenEntity oldToken = refreshTokenRepository.findByTokenAndIsValid(token, true)
+                .orElseThrow(() -> new RecordNotFoundException("Invalid token"));
 
         oldToken.setIsValid(false);
         refreshTokenRepository.save(oldToken);
     }
+
     @Override
     public String createRefreshToken(String username) {
         UserEntity user = userRepository.findByUsername(username)

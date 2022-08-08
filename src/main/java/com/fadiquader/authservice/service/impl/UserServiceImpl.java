@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username));
+                .orElseThrow(() -> new UsernameNotFoundException(username + " was not found"));
 
         log.info("User found {}", user.getUsername());
 
@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(username));
         RoleEntity role = roleRepository.findByName(roleName);
         user.getRoles().add(role);
-
     }
 
     @Override

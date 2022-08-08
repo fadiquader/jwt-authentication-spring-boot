@@ -33,11 +33,7 @@ public class AuthResource {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid UserLoginRequest loginRequest) {
-        try {
-            return ResponseEntity.ok(authenticate(loginRequest));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return ResponseEntity.ok(authenticate(loginRequest));
     }
 
     @PostMapping("/refresh-token")
@@ -57,7 +53,7 @@ public class AuthResource {
     private AuthResponse authenticate(UserLoginRequest loginRequest) throws RuntimeException {
         final Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        if (authentication == null || !authentication.isAuthenticated()) throw new RuntimeException();
+        if (authentication == null || !authentication.isAuthenticated()) throw new RuntimeException("AuthenticationFailed");
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();

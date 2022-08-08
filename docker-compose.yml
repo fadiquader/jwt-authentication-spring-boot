@@ -1,15 +1,15 @@
 version: "3"
 
 services:
-#  flyway:
-#    image: flyway/flyway:latest
-#    command: -url=jdbc:mysql://db/mobile_app_ws?allowPublicKeyRetrieval=true&useSSL=false -schemas=mobile_app_ws -user=root -password=P@ssw0rd -connectRetries=60 migrate
-#    volumes:
-#      - ./src/main/resources/db/migration:/flyway/sql
-#    depends_on:
-#      - db
-#    networks:
-#      - backend
+  flyway:
+    image: flyway/flyway:latest
+    command: -url=jdbc:mysql://db/authservice?allowPublicKeyRetrieval=true&useSSL=false -schemas=authservice -user=root -password=P@ssw0rd -connectRetries=60 migrate
+    volumes:
+      - ./src/main/resources/db/migration:/flyway/sql
+    depends_on:
+      - db
+    networks:
+      - backend
 
   db:
     image: mysql
