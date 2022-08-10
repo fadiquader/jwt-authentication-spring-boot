@@ -18,7 +18,7 @@ import java.time.Instant;
 @Setter
 public class RefreshTokenEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "token", nullable = false, unique = true, updatable = false)
     private String token;

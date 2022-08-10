@@ -16,24 +16,24 @@ public class AuthserviceApplication {
 		SpringApplication.run(AuthserviceApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner run(UserService userService) {
-		return arg -> {
-			userService.saveRole(new RoleEntity(null, "ROLE_USER"));
-			userService.saveRole(new RoleEntity(null, "ROLE_MANAGER"));
-			userService.saveRole(new RoleEntity(null, "ROLE_ADMIN"));
-			userService.saveRole(new RoleEntity(null, "ROLE_SUPER_ADMIN"));
-
-			userService.saveUser(new UserEntity(null, "Fadi", "fadiquader", "123456", new ArrayList<>()));
-			userService.saveUser(new UserEntity(null, "william", "william", "123456", new ArrayList<>()));
-			userService.saveUser(new UserEntity(null, "alaa", "alaa", "123456", new ArrayList<>()));
-			userService.saveUser(new UserEntity(null, "alan", "alan", "123456", new ArrayList<>()));
-
-			userService.addRoleToUser("fadiquader", "ROLE_SUPER_ADMIN");
-			userService.addRoleToUser("fadiquader", "ROLE_ADMIN");
-			userService.addRoleToUser("fadiquader", "ROLE_USER");
-			userService.addRoleToUser("william", "ROLE_MANAGER");
-			userService.addRoleToUser("alaa", "ROLE_USER");
-		};
-	}
+//	@Bean
+//	CommandLineRunner run(UserService userService) {
+//		return arg -> {
+//			userService.saveRole(new RoleEntity(null, "ROLE_USER"));
+//			userService.saveRole(new RoleEntity(null, "ROLE_MANAGER"));
+//			userService.saveRole(new RoleEntity(null, "ROLE_ADMIN"));
+//			userService.saveRole(new RoleEntity(null, "ROLE_SUPER_ADMIN"));
+//
+//			userService.saveUser(new UserEntity(null, "Fadi", "fadiquader", "123456", new ArrayList<>()));
+//			userService.saveUser(new UserEntity(null, "william", "william", "123456", new ArrayList<>()));
+//			userService.saveUser(new UserEntity(null, "alaa", "alaa", "123456", new ArrayList<>()));
+//			userService.saveUser(new UserEntity(null, "alan", "alan", "123456", new ArrayList<>()));
+//
+//			userService.addRoleToUser("fadiquader", "ROLE_SUPER_ADMIN");
+//			userService.addRoleToUser("fadiquader", "ROLE_ADMIN");
+//			userService.addRoleToUser("fadiquader", "ROLE_USER");
+//			userService.addRoleToUser("william", "ROLE_MANAGER");
+//			userService.addRoleToUser("alaa", "ROLE_USER");
+//		};
+//	}
 }

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class RoleEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     @Column(name = "name", unique = true)
