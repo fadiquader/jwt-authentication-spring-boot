@@ -37,7 +37,7 @@ public class TestUserResource {
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
-//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test

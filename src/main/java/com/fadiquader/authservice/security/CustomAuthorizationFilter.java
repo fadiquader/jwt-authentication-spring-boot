@@ -28,7 +28,9 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 //        String path = request.getServletPath();
         String token = parseJwt(request);
+        log.info("hola {}", token);
         DecodedJWT decodedJWT = jwtUtils.verifyAccessToken(token);
+
         if (decodedJWT != null) {
             String username = decodedJWT.getSubject();
             UserDetails userDetails = (UserPrincipal) userDetailsService.loadUserByUsername(username);

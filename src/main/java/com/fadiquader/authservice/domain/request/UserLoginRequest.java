@@ -5,6 +5,8 @@ import lombok.*;
 import javax.validation.constraints.NotEmpty;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserLoginRequest {
     @NotEmpty
     private String username;
